@@ -35,7 +35,7 @@ After selecting your top it will then bring you to a list of the top<br>
 10 Artists in each of the ones you liked<br>
 LISTS MAY VARY WITH THE WEBSITES THE DATA COMES FROM<br>
 This is for the year of  2018 via <a href="https://www.statista.com/statistics/310746/share-music-album-sales-us-genre/"> this link<a><br>
-<!--Update the artists monthly (or when https://www.ranker.com/crowdranked-list/best-genres-of-music updates -->
+<!--Update when new list is out-->
 </p>
 <!-- This is the start of the Form!-->
 <!--
