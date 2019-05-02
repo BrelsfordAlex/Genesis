@@ -1,0 +1,301 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:700);
+
+body{
+    background-image:  radial-gradient(#90cea6,#1db954);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y:hidden;
+    overflow: hidden;
+   }  
+
+.city{
+    position:fixed; 
+    bottom: 0;
+    width: 100%;
+    z-index: -2;
+}
+
+.tab {
+    font-family: 'Ubuntu';
+    font-size: 20px;
+    color: white;
+    margin-left: 75px;
+    margin-top: 20px;
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px; 
+    display: inline-block;  
+}
+.tab:hover{
+   text-decoration:none; 
+   cursor:pointer;  
+   color: white;
+}
+.tab:before, .tab:after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
+    outline:none;
+}
+.tab:before {
+    opacity: 0;
+    transform: translateY(- 8px);
+    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
+}
+.tab:after {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s; 
+}
+.tab:hover:before, .tab:focus:before {
+    opacity: 1;
+    transform: translateY(0);
+}
+.tab:focus {
+    outline: none;  
+    text-decoration: none;
+    color:#90cea6;
+}
+
+.homeBanner{
+   position:fixed;
+   width: 100%;
+   height: 80px;
+   background:  black;
+   z-index: -1; 
+   top: 0;
+   left: 0;
+   border-bottom-style: solid;
+   border-bottom-width: 5px;
+   border-bottom-color: #094409;
+}
+
+
+.homeLogo{
+   position:fixed; 
+   padding-top: 10px;
+   margin-left: 30px;
+   width: 52px;
+}
+
+.userNameTxt{
+    position: fixed;
+    top: 35px;
+    right: 6%;
+    text-align: right;
+    font-family: 'Ubuntu';
+    color: white;
+    font-size: 20px; 
+}
+
+.userNamePic{
+    width: 60px;
+    border-radius: 50%;
+    position: fixed;
+    right: 2%;
+    margin-top: 18px;
+
+}
+
+.albumArt {
+    width: 650px;
+    margin-left: 100px;
+    margin-top: 40px;
+    border: 5px solid #1aa54b;
+    border-radius: 10px;
+}
+
+.trackName, .artist{
+    font-family: 'Ubuntu';
+    font-size: 18px;
+    color: white;
+    position: fixed;
+    left: 40px;
+    bottom: 50px;
+    
+    
+}
+
+.artist {
+    bottom: 20px;
+    font-family: 'Century Gothic';
+}
+
+.homeLogo2{
+    position: fixed; 
+    padding-top: 150px;
+    margin-left: 45%;
+    width: 200px;
+ }
+
+ .txtBoxWhite, .txtBoxWhite1 {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: 50px;
+    height: 650px;
+    padding: 10px;
+    background-color: #d5e5d7;
+    border: 10px solid green; 
+    border-image-source: linear-gradient(lightgreen, darkgreen);
+    border-image-slice: 20;
+    padding-top: 25px;
+    width: 900px;
+    z-index: -1;
+ }
+
+ .txtBoxWhite1{
+    width: 700px;
+ }
+
+ .btnSpotify, .btnSpotify1, .chooseSubmit1, .chooseSubmit2, .chooseSubmit3, .chooseSubmit4, .chooseSubmit5 {
+    font-family: 'Ubuntu';
+    top: 540px;
+    padding: 10px 170px;
+    background-image: linear-gradient(to right, #34e89e , #0f3443 , #34e89e);
+    box-shadow: 0 4px 15px 0 rgba(5, 85, 9, 0.75);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    height: 55px;
+    text-align:center;
+    text-decoration: none;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.btnSpotify:hover, .btnSpotify1:hover, .chooseSubmit1:hover, .chooseSubmit2:hover, .chooseSubmit3:hover, .chooseSubmit4:hover, .chooseSubmit5:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    text-decoration: none;
+}
+.btnSpotify:focus, .btnSpotify1:focus, .chooseSubmit1:focus, .chooseSubmit2:focus, .chooseSubmit3:focus, .chooseSubmit4:focus, .chooseSubmit5:focus {
+    outline: none;
+}
+
+.btnSpotify, .btnSpotify1{
+    position: relative;
+}
+
+.chooseSubmit2{
+margin-top:110px;
+}
+
+.chooseSubmit2:active{
+    background: black;
+    transition-duration: 3s;
+}
+
+.chooseSubmit3{
+    padding: 16px 200px;
+}
+
+.chooseSubmit4{
+    margin-top: 100px;
+}
+
+.chooseSubmit5{
+    margin-top: 250px;
+}
+
+
+
+.nameChoose, .nameChoose1{
+    font-family: 'Ubuntu';
+    color:  #476651;
+    text-align: center;
+    font-size: 31px;
+    padding-top: 150px;
+} 
+
+.nameChoose1 {
+    padding-top: 15px;
+    font-size: 24px;
+}
+
+.numTracks {
+    font-family: 'Ubuntu';
+    color:  rgba(4, 10, 2, 0.616);
+    text-align: center;
+    font-size: 50px;
+    padding-top: 30px;
+}
+
+.txtBoxChoose {
+    margin-top: 150px;
+    padding: 10px 100px;
+    font-family: 'Ubuntu';
+    color: blue;
+    font-size: 30px;
+    text-align: center;
+}
+
+.chooseSubmit{
+margin-top: 120px;
+}
+
+.spotifyLink{
+    padding-top:80px;
+}
+
+.txtTitle1, .txtTitle2, .txtTitle3 {
+    font-family: 'Ubuntu';
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 35px;
+    font-size: 30px;
+    color: #476651;
+    font-weight: bolder;
+    padding-bottom:20px;
+ }
+
+.txtTitle2{
+    margin-top: 55px;
+}
+
+.txtTitle3{
+    text-align: center;
+}
+
+ .txtbody1, .txtbody2 {
+    font-family: 'Trebuchet MS';
+    text-align: left;
+    margin-left: 15px;
+    margin-top: -10px;
+    font-size: 15px;
+    color: #252826;
+    line-height: 30px;
+ }
+
+ .txtbody2{
+     padding-top: 40px;
+ }
+
+ .logoutTxt{
+     color: rgb(31, 31, 31);
+     font-family: 'Ubuntu';
+     font-size:36px;
+     padding-top: 50px;
+     padding-left: 70px;
+ }
+
+ .logoutBtn {
+     margin-left:30px;
+     margin-top:50px;
+ }
