@@ -2,10 +2,10 @@
 - Must have nodeJS installed to run server
 
 # 0) install dependencies
--In CMD cd to auth-server folder
--npm install AND THEN
--In CMD cd to client
--npm install
+- In CMD cd to auth-server folder
+- npm install AND THEN
+- In CMD cd to client
+- npm install
 
 # 1) Start the Server
 - Navigate to the initial directory and open Start_server.bat
