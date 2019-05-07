@@ -4,7 +4,7 @@
 # 0) install dependencies
 - In CMD cd to auth-server folder
 - npm install
-# AND THEN
+### AND THEN
 - In CMD cd to client
 - npm install
 
