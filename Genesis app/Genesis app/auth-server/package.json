@@ -1,0 +1,13 @@
+{
+  "author": "Spotify",
+  "name": "genesis",
+  "description": "Genesis application",
+  "version": "0.0.1",
+  "dependencies": {
+    "cookie-parser": "1.3.2",
+    "express": "~4.0.0",
+    "querystring": "~0.2.0",
+    "react-awesome-button": "^6.1.0",
+    "request": "~2.34.0"
+  }
+}
