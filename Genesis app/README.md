@@ -1,5 +1,5 @@
 # Genesis Music application
-## Must have nodeJS installed to run server
+- Must have nodeJS installed to run server
 
 # 0) install dependencies
 -In CMD cd to auth-server folder
