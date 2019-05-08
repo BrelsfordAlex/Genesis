@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './index.css';
-import conn from 'connections';
+
 //Declare and instansiate a Spotify-API object
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -280,34 +280,8 @@ createPlaylist(){
  addTracks(){
    spotifyApi.addTracksToPlaylist(this.state.me.id, this.state.newPlaylist.id, [this.state.similar.tracks])
  }
-/**
- * This is the connection to the database
- */
+
  
-  var sql = require("mysql");
-
-  // config for your database
-  var config =
-   {
-      user: 'GenesisCreators',
-      password: 'wewillpassthisclass',
-      server: 'jdbc:postgresql://genesisdatabasethesecondcoming.crlaiqpdndku.us-east-2.rds.amazonaws.com:5432/GenesisCreators', 
-      database: 'user_info' 
-  };
-
-
-    config.connect();
-    
-    config.query('SELECT * from user_info', function(err, user_id, token) {
-      if (!err)
-        var inDB = true;
-      else
-       getGenres()
-       getArtists()
-    });
-    
-    config.end();
-
 
  //search reccommended tracks buy specifying Genre
  getGenres()
@@ -328,9 +302,12 @@ createPlaylist(){
      this.addTracks()
      this.setState({tracks: this.state.tracks + 1});
     }
-  getArtists()
+/* 
+Why was this comented out? 
+Because of the fact it was not properly working
+getArtists()
   {
-    if()
+
     spotifyApi.getRecommendations({
       seed_artists: this.state.artistsPicked,
       limit: numTracks
@@ -346,7 +323,7 @@ createPlaylist(){
        })
        this.addTracks()
        this.setState({tracks: this.state.tracks + 1});
-  }
+  } */
 
 
  //Functions called on app load
@@ -399,6 +376,7 @@ createPlaylist(){
           <Tab className="tab">Create A Playlist</Tab>
           <Tab className="tab">About</Tab>
           <Tab className="tab"> FAQ </Tab>
+          <Tab className="tab"> Contact Information</Tab>
           <Tab className="tab">Logout</Tab>
         </TabList>
 
@@ -438,7 +416,7 @@ createPlaylist(){
             
             <div style={hidden1a}>
             <div className="nameChoose"> HOLD UP! Looks like you don't have any liked Tracks </div>
-                    <div className="nameChoose1"> That's okay! Create a custom playlist based on genres and your favorite Artist instead </div> 
+                    <div className="nameChoose1"> That's okay! Create a custom playlist based on genres<br></br> and your favorite Artist instead </div> 
                     <form onSubmit={this.handleSubmit1}><br/><br/>
                           <div className="genreList"><label>hip-hop💯<input name="rap" type="checkbox" checked={this.state.hiphop} onChange={this.handleInputChange}/></label></div>
                           <div className="genreList"><label> Rock🗿 <input name="rock" type="checkbox" checked={this.state.rock} onChange={this.handleInputChange}/></label></div>
@@ -453,14 +431,14 @@ createPlaylist(){
                           <center><input className="chooseSubmit6" type="submit" value="Accept Genres" onClick={this.toggle3.bind(this)}/></center>
                     </form>
 
-                    <form onSubmit={this.handleSubmit1}><br></br>
-                          <div className="artistList"><label>Ed Sheeran<input name="Ed Sheeran" type="checkbox" checked={this.state.artist1} onChange={this.handleInputChange}/></label></div>
+{/*                     /** <form onSubmit={this.handleSubmit1}><br></br>
+                          <div className="artistList"><label>Eminem<input name="Eminem" type="checkbox" checked={this.state.artist1} onChange={this.handleInputChange}/></label></div>
                           <div className="artistList"><label> Drake <input name="Drake" type="checkbox" checked={this.state.artist2} onChange={this.handleInputChange}/></label></div>
                           <div className="artistList"><label> Rihanna <input name="Rihanna" type="checkbox" checked={this.state.artist3} onChange={this.handleInputChange}/></label></div>
-                          <div className="artistList"><label> Ariana Grande <input name="Ariana Grande" type="checkbox" checked={this.state.artist4} onChange={this.handleInputChange}/></label></div>
+                          <div className="artistList"><label> Jay-Z <input name="ArianaGrande" type="checkbox" checked={this.state.artist4} onChange={this.handleInputChange}/></label></div>
                           <div className="artistList"><label> Bruno Mars <input name="Bruno Mars" type="checkbox" checked={this.state.artist5} onChange={this.handleInputChange}/></label></div><br/><br/><br/>
                           <center><input className="chooseSubmit6" type="submit" value="Accept Artists" onClick={this.toggle3.bind(this)}/></center>
-                    </form>
+                    </form> commented out due to the fact it would not properly work */ }
             </div>     
           </div>
        
@@ -501,9 +479,11 @@ createPlaylist(){
                           After the survey is complete all you need to do is sit back, listen, and enjoy the music 😎. </div>
                             
                           <div className="txtbody2"> When you Like 👍 tracks, Genesis will automatically update accordingly to generate 
-                            your perfect playlist giving you new music that is customized for you. </div>
+                            your perfect playlist giving you new music that is customized for you. Because of the Spotify api, we are 
+                            not allowed to play music on our site but, we can open a new tab for you with the playlist you just created! </div>
 
-
+                            <div className="txtbody3"> Why is there so many emojis? This is the work of one of the creators who loves
+                            emojis.</div>
                 <center><button onClick={this.handleButtonClick} class="chooseSubmit4"> Roger That 👌</button></center>
 
             </div>
@@ -516,14 +496,17 @@ createPlaylist(){
               <div className="faqTxt"> 1. What if I have not liked any tracks on Spotify?</div>
               <div className="faqTxtBody"> - Genesis will automatically detect if you have NOT liked any tracks.<br/><br/>
                In the case that you have not liked any tracks:<br/>Genesis will prompt you to select your favorite genres in which it will
-               create a custom playlist based on the genres selected.<br/><br/>
+               create a custom playlist based on the genres selected. <br/><br/>
                In the case that you have liked tracks:<br/> Genesis will take your liked tracks and create a custom playlist based on the tracks</div>
                <br/><br/>
               <div className="faqTxt"> 2. Why would I want to use this app over the regular Spotify app?</div>
               <div className="faqTxtBody"> With Genesis's custom playlists you have the ability to skip as many tracks as you want 
               , seek to a point in the track, and replay tracks -  all disabled in Spotify playlists! (without a premium
               Spotify account) </div>
-
+              
+              <div className="faqTxt"> 3. Why would I use this service?</div>
+              <div className="faqTxtBody"> This service is student ran, and made. IF you are wondering we are working our 
+              hardest to get this t obe in tip top shape for your use! What other places can say that?</div>
               </div>
 
               <center><button onClick={this.handleButtonClick} class="chooseSubmit7"> Roger That 👌</button></center>
@@ -531,6 +514,20 @@ createPlaylist(){
           
 
           </TabPanel>
+          {/* data for Contact information tab */}
+          <TabPanel>
+              <div className="txtBoxWhite1">
+              <div className="txtTitle3"> Contact Information </div>
+              <div className="txtTitle3"> Email </div>
+              <div className="txtTitle3">:  GenisisCreators@gmail.com <br/><br/>
+               In the case that you have need help please contact us here!</div>
+              </div>
+              <center><button onClick={this.handleButtonClick} class="chooseSubmit7"> Roger That 👌</button></center>
+
+               
+
+          </TabPanel>
+          
 
           {/* data for logout tab */}
           <TabPanel>
