@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './index.css';
-
-
+import conn from 'connections';
 //Declare and instansiate a Spotify-API object
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -51,6 +50,11 @@ class App extends Component {
       disco: false,
       funk: false,
       dance: false,
+      artist1: false,
+      artist2: false, 
+      artist3: false,
+      artist4: false,
+      artist5: false,
       genrePicked: []
     }
 
@@ -276,10 +280,38 @@ createPlaylist(){
  addTracks(){
    spotifyApi.addTracksToPlaylist(this.state.me.id, this.state.newPlaylist.id, [this.state.similar.tracks])
  }
+/**
+ * This is the connection to the database
+ */
+ 
+  var sql = require("mysql");
+
+  // config for your database
+  var config =
+   {
+      user: 'GenesisCreators',
+      password: 'wewillpassthisclass',
+      server: 'jdbc:postgresql://genesisdatabasethesecondcoming.crlaiqpdndku.us-east-2.rds.amazonaws.com:5432/GenesisCreators', 
+      database: 'user_info' 
+  };
+
+
+    config.connect();
+    
+    config.query('SELECT * from user_info', function(err, user_id, token) {
+      if (!err)
+        var inDB = true;
+      else
+       getGenres()
+       getArtists()
+    });
+    
+    config.end();
 
 
  //search reccommended tracks buy specifying Genre
- getGenres(){
+ getGenres()
+ {
   spotifyApi.getRecommendations({
     seed_genres: this.state.genrePicked,
     limit: numTracks
@@ -296,6 +328,25 @@ createPlaylist(){
      this.addTracks()
      this.setState({tracks: this.state.tracks + 1});
     }
+  getArtists()
+  {
+    if()
+    spotifyApi.getRecommendations({
+      seed_artists: this.state.artistsPicked,
+      limit: numTracks
+        })
+        .then((response) =>{
+          for(let i=0; i<numTracks; i++){
+          this.setState({
+            similar:{
+               tracks: response.tracks[i].uri
+            }
+         });
+        }
+       })
+       this.addTracks()
+       this.setState({tracks: this.state.tracks + 1});
+  }
 
 
  //Functions called on app load
@@ -387,7 +438,7 @@ createPlaylist(){
             
             <div style={hidden1a}>
             <div className="nameChoose"> HOLD UP! Looks like you don't have any liked Tracks </div>
-                    <div className="nameChoose1"> That's okay! Create a custom playlist based on genres instead </div> 
+                    <div className="nameChoose1"> That's okay! Create a custom playlist based on genres and your favorite Artist instead </div> 
                     <form onSubmit={this.handleSubmit1}><br/><br/>
                           <div className="genreList"><label>hip-hop💯<input name="rap" type="checkbox" checked={this.state.hiphop} onChange={this.handleInputChange}/></label></div>
                           <div className="genreList"><label> Rock🗿 <input name="rock" type="checkbox" checked={this.state.rock} onChange={this.handleInputChange}/></label></div>
@@ -400,6 +451,15 @@ createPlaylist(){
                           <div className="genreList1"><label> Funk🕺 <input name="funk" type="checkbox" checked={this.state.funk} onChange={this.handleInputChange}/></label></div>
                           <div className="genreList1"><label> dance💃 <input name="dance" type="checkbox" checked={this.state.dance} onChange={this.handleInputChange}/></label></div>
                           <center><input className="chooseSubmit6" type="submit" value="Accept Genres" onClick={this.toggle3.bind(this)}/></center>
+                    </form>
+
+                    <form onSubmit={this.handleSubmit1}><br></br>
+                          <div className="artistList"><label>Ed Sheeran<input name="Ed Sheeran" type="checkbox" checked={this.state.artist1} onChange={this.handleInputChange}/></label></div>
+                          <div className="artistList"><label> Drake <input name="Drake" type="checkbox" checked={this.state.artist2} onChange={this.handleInputChange}/></label></div>
+                          <div className="artistList"><label> Rihanna <input name="Rihanna" type="checkbox" checked={this.state.artist3} onChange={this.handleInputChange}/></label></div>
+                          <div className="artistList"><label> Ariana Grande <input name="Ariana Grande" type="checkbox" checked={this.state.artist4} onChange={this.handleInputChange}/></label></div>
+                          <div className="artistList"><label> Bruno Mars <input name="Bruno Mars" type="checkbox" checked={this.state.artist5} onChange={this.handleInputChange}/></label></div><br/><br/><br/>
+                          <center><input className="chooseSubmit6" type="submit" value="Accept Artists" onClick={this.toggle3.bind(this)}/></center>
                     </form>
             </div>     
           </div>
